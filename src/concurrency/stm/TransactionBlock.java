@@ -1,8 +1,5 @@
 package concurrency.stm;
 
-/**
- * @author mishadoff
- */
 public abstract class TransactionBlock implements Runnable {
     private Transaction tx;
 

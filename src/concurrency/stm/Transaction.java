@@ -1,18 +1,18 @@
 package concurrency.stm;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
-/**
- * @author mishadoff
- */
-public final class Transaction extends Context{
+public final class Transaction<T> extends Context{
+    
     private HashMap<Ref, Object> inTxMap = new HashMap<>();
     private HashSet<Ref> toUpdate = new HashSet<>();
     private HashMap<Ref, Long> version = new HashMap<>();
+    private ArrayList<T> values = new ArrayList<>();
 
     private long revision;
     private static AtomicLong transactionNum = new AtomicLong(0);
@@ -20,7 +20,18 @@ public final class Transaction extends Context{
     Transaction() {
         revision = transactionNum.incrementAndGet();
     }
-
+    
+    T getValue() {
+        if (values.size() > 0) {
+            return values.get(values.size() - 1);
+        }
+        return null;
+    }
+    
+    void setValue(T val) {
+        values.add(val);
+    }
+    
     @Override
     <T> T get(Ref<T> ref) {
         if (!inTxMap.containsKey(ref)) {

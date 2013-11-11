@@ -1,6 +1,6 @@
 package concurrency.test;
 
-import concurrency.stm.*;
+import concurrency.stm.STM.*;
 
 import java.util.Random;
 import java.util.concurrent.ExecutorService;

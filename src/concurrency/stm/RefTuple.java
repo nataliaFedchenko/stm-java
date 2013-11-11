@@ -1,8 +1,5 @@
 package concurrency.stm;
 
-/**
- * @author mishadoff
- */
 public class RefTuple<V, R> {
     V value;
     R revision;

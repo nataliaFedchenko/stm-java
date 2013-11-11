@@ -1,8 +1,5 @@
 package concurrency.stm;
 
-/**
- * @author mishadoff
- */
 public final class Ref<T> {
     RefTuple<T, Long> content;
 
@@ -17,11 +14,6 @@ public final class Ref<T> {
     public void setValue(T value, Transaction tx) {
         tx.set(this, value);
     }
-
-    /*
-       UNSAFE
-       ONLY FOR INSTRUMENTATION
-    */
 
     @Deprecated
     public T get() {

@@ -2,9 +2,6 @@ package concurrency.test;
 
 import concurrency.stm.GlobalContext;
 
-/**
- * @author mishadoff
- */
 public class RefTest {
     public static void main(String[] args) {
         Account a = new Account(100);
